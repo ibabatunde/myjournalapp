@@ -15,20 +15,20 @@
         android:focusableInTouchMode="true">
 
         <EditText
-            android:id="@+id/titleEdit"
+            android:id="@+id/title_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title"
-            android:padding="16dp" />
+            android:hint="@string/title_edit_note"
+            android:padding="@dimen/padding_edit_note" />
 
         <EditText
-            android:id="@+id/bodyEdit"
+            android:id="@+id/body_edit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:lines="25"
-            android:hint="Body"
+            android:hint="@string/body_edit_note"
             android:gravity="start"
-            android:padding="16dp" />
+            android:padding="@dimen/padding_edit_note" />
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -37,6 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_save"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/padding_edit_note"
         android:onClick="saveNote" />
 </android.support.design.widget.CoordinatorLayout>

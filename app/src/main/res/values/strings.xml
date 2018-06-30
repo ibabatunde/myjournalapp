@@ -16,4 +16,8 @@
     <string name="log_in_failed">Log in failed</string>
     <string name="signin_with_google_account">Signing in with google account</string>
     <string name="my_journal">My Journal</string>
+    <string name="title_edit_note">Title</string>
+    <string name="body_edit_note">Body</string>
+    <string name="holder_first_letter">D</string>
+    <string name="date_text">DD/MM/YY</string>
 </resources>

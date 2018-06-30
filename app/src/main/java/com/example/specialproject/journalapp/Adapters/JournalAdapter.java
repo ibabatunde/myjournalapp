@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalViewHolder> {
 
-    private Context context;
+    private Context mContext;
 
     private static final String DATE_FORMAT = "dd/MM/yyy";
 
@@ -26,14 +26,14 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
     private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     public JournalAdapter(Context mContext, EntryClickListener entryClickListener) {
-        this.context = mContext;
+        this.mContext = mContext;
         this.entryClickListener = entryClickListener;
     }
 
     @NonNull
     @Override
     public JournalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.display_info, null);
         return new JournalViewHolder(view);
     }
@@ -82,7 +82,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalV
 
         public JournalViewHolder(View itemView) {
             super(itemView);
-            firstText = itemView.findViewById(R.id.firstLetter);
+            firstText = itemView.findViewById(R.id.first_letter);
             titleOfEntry = itemView.findViewById(R.id.title_of_entry);
             bodyOfEntry = itemView.findViewById(R.id.body_of_entry);
             dateText = itemView.findViewById(R.id.date_text);

@@ -9,13 +9,13 @@ import com.example.specialproject.journalapp.Models.JournalEntry;
 // COMPLETED (5) Make this class extend ViewModel
 public class AddJournalViewModel extends ViewModel {
 
-    private LiveData<JournalEntry> entry;
+    private LiveData<JournalEntry> mEntry;
 
     public AddJournalViewModel(JournalDatabase database, int taskId) {
-        entry = database.journalDao().loadTaskById(taskId);
+        mEntry = database.journalDao().loadTaskById(taskId);
     }
 
     public LiveData<JournalEntry> getTask() {
-        return entry;
+        return mEntry;
     }
 }

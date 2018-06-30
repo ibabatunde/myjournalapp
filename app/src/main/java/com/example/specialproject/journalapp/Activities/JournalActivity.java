@@ -3,10 +3,10 @@ package com.example.specialproject.journalapp.Activities;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.specialproject.journalapp.Adapters.JournalAdapter;
-import com.example.specialproject.journalapp.Executors.AppExecutors;
 import com.example.specialproject.journalapp.Database.JournalDatabase;
+import com.example.specialproject.journalapp.Executors.AppExecutors;
 import com.example.specialproject.journalapp.Models.JournalEntry;
 import com.example.specialproject.journalapp.R;
 import com.example.specialproject.journalapp.ViewModels.MainViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
@@ -31,22 +30,22 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 public class JournalActivity extends AppCompatActivity implements JournalAdapter.EntryClickListener {
 
-    private RecyclerView recyclerView;
-    private JournalAdapter journalAdapter;
-    private FloatingActionButton fab;
-    JournalDatabase mDb;
+    private RecyclerView mRecyclerView;
+    private JournalAdapter mJournalAdapter;
+    private FloatingActionButton mFab;
+    private JournalDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
-        journalAdapter = new JournalAdapter(this, this);
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(journalAdapter);
+        mJournalAdapter = new JournalAdapter(this, this);
+        mRecyclerView = findViewById(R.id.recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mJournalAdapter);
         DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
-        recyclerView.addItemDecoration(decoration);
+        mRecyclerView.addItemDecoration(decoration);
 
         setupViewModel();
 
@@ -64,14 +63,14 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
                     @Override
                     public void run() {
                         int position = viewHolder.getAdapterPosition();
-                        List<JournalEntry> entry = journalAdapter.getEntries();
+                        List<JournalEntry> entry = mJournalAdapter.getEntries();
                         mDb.journalDao().deleteEntry(entry.get(position));
                     }
                 });
             }
-        }).attachToRecyclerView(recyclerView);
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        }).attachToRecyclerView(mRecyclerView);
+        mFab = findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(JournalActivity.this, EditNoteActivity.class);
@@ -86,7 +85,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         viewModel.getEntries().observe(this, new Observer<List<JournalEntry>>() {
             @Override
             public void onChanged(@Nullable List<JournalEntry> journalEntries) {
-                journalAdapter.setEntries(journalEntries);
+                mJournalAdapter.setEntries(journalEntries);
             }
         });
     }

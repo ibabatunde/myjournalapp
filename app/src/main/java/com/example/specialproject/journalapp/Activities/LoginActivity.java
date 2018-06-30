@@ -3,7 +3,6 @@ package com.example.specialproject.journalapp.Activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,15 +26,15 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
 
-    private final String TAG = "Main_App";
+    private final static String TAG = "Main_App";
 
-    private ProgressDialog dialog;
+    private ProgressDialog mDialog;
 
-    GoogleSignInClient mGoogleSignInClient;
+    private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 101;
-    private SignInButton signInButton;
+    private SignInButton mSignInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
@@ -59,11 +58,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initOnCreate() {
-        signInButton = findViewById(R.id.google_sign_in_button);
-        dialog = new ProgressDialog(this);
-        dialog.setTitle(getString(R.string.signin_with_google_account));
-        dialog.setMessage("Loading...");
-        auth = FirebaseAuth.getInstance();
+        mSignInButton = findViewById(R.id.google_sign_in_button);
+        mDialog = new ProgressDialog(this);
+        mDialog.setTitle(getString(R.string.signin_with_google_account));
+        mDialog.setMessage("Loading...");
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -87,19 +86,19 @@ public class LoginActivity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        auth.signInWithCredential(credential)
+        mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = auth.getCurrentUser();
+                            FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, JournalActivity.class);
                             startActivity(intent);
                             Toast.makeText(LoginActivity.this, R.string.user_successfully_logged_in, Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
-                            dialog.dismiss();
+                            mDialog.dismiss();
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, R.string.log_in_failed, Toast.LENGTH_LONG).show();
                         }
@@ -109,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signIn() {
-        dialog.show();
+        mDialog.show();
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }

@@ -13,17 +13,17 @@ import com.example.specialproject.journalapp.Models.JournalEntry;
 public abstract class JournalDatabase extends RoomDatabase {
     public static final Object LOCK = new Object();
     public static final String DATABASE_NAME = "journals";
-    public static JournalDatabase journalInstance;
+    public static JournalDatabase sJournalInstance;
 
     public static JournalDatabase getInstance(Context context) {
-        if (journalInstance == null) {
+        if (sJournalInstance == null) {
             synchronized (LOCK) {
-                journalInstance = Room.databaseBuilder(context.getApplicationContext(),
+                sJournalInstance = Room.databaseBuilder(context.getApplicationContext(),
                         JournalDatabase.class, JournalDatabase.DATABASE_NAME)
                         .build();
             }
         }
-        return journalInstance;
+        return sJournalInstance;
     }
 
     public abstract JournalDao journalDao();

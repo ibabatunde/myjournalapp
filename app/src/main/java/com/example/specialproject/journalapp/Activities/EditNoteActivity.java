@@ -7,9 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -86,8 +83,8 @@ public class EditNoteActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        titleEdit = findViewById(R.id.titleEdit);
-        bodyEdit = findViewById(R.id.bodyEdit);
+        titleEdit = findViewById(R.id.title_edit);
+        bodyEdit = findViewById(R.id.body_edit);
         journalReference = FirebaseDatabase.getInstance().getReference(getString(R.string.noteStoredFirebase));
     }
 

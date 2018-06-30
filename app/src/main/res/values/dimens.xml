@@ -7,4 +7,9 @@
     <dimen name="drawable_padding">5dp</dimen>
     <dimen name="front_page_text_size">40sp</dimen>
     <dimen name="marging_top_my_journal">30dp</dimen>
+    <dimen name="padding_edit_note">16dp</dimen>
+    <dimen name="margin_linear_layout_disp">10dp</dimen>
+    <dimen name="width_height_background">65dp</dimen>
+    <dimen name="relative_padding">5dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
 </resources>
