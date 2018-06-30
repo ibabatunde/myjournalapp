@@ -35,6 +35,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
     private JournalAdapter journalAdapter;
     private FloatingActionButton fab;
     JournalDatabase mDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +90,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -98,7 +100,7 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.signOut){
+        if (item.getItemId() == R.id.signOut) {
             signOut();
             return true;
         }
@@ -111,7 +113,8 @@ public class JournalActivity extends AppCompatActivity implements JournalAdapter
         intent.putExtra(EditNoteActivity.EXTRA_ENTRY_ID, itemId);
         startActivity(intent);
     }
-    public void signOut(){
+
+    public void signOut() {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(JournalActivity.this, LoginActivity.class);
         startActivity(intent);

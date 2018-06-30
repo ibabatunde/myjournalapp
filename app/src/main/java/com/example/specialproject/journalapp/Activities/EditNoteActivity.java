@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
-public class EditNoteActivity extends AppCompatActivity{
+public class EditNoteActivity extends AppCompatActivity {
 
     EditText titleEdit, bodyEdit;
 
