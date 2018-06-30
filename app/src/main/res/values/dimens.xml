@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingBottom">15dp</dimen>
+    <dimen name="edittext_width">250dp</dimen>
+    <dimen name="first_letter_size">25sp</dimen>
+    <dimen name="marginTopLogin">10dp</dimen>
+    <dimen name="drawable_padding">5dp</dimen>
+    <dimen name="front_page_text_size">40sp</dimen>
+    <dimen name="marging_top_my_journal">30dp</dimen>
+</resources>

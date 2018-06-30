@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Journal App</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="editActivityTitle">Edit Note</string>
+    <string name="noteActivity">Notes</string>
+    <string name="reg_title">Registeration</string>
+    <string name="login">LOGIN</string>
+    <string name="register">Register</string>
+    <string name="first_line">First line of the journal entry</string>
+    <string name="title_one">Title One</string>
+    <string name="dont_have_an_acc">Don\'t have an account yet?</string>
+    <string name="toastForEmpty">Fill the boxes before clicking save</string>
+    <string name="noteStoredFirebase">notes</string>
+    <string name="user_successfully_logged_in">User logged in successfully</string>
+    <string name="log_in_failed">Log in failed</string>
+    <string name="signin_with_google_account">Signing in with google account</string>
+    <string name="my_journal">My Journal</string>
+</resources>
