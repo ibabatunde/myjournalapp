@@ -119,5 +119,4 @@ public class EditNoteActivity extends AppCompatActivity {
         addJournal();
     }
 
-
 }
